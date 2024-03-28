@@ -28,7 +28,7 @@
         </div>
         <div class="content">
             <h2>Find a Dog/Cat</h2>
-            <form action="#" method="post">
+            <form onsubmit="event.preventDefault(); validateFindForm()">
                 <label for="pet-type">Cat or Dog:</label>
                 <select id="pet-type" name="pet-type">
                     <option value="cat">Cat</option>
@@ -36,7 +36,7 @@
                 </select><br><br>
 
                 <label for="breed">Breed:</label>
-                <input type="text" id="breed" name="breed"><br><br>
+                <input type="text" id="breed" name="breed" required><br><br>
 
                 <label for="age">Preferred Age:</label>
                 <select id="age" name="age">
