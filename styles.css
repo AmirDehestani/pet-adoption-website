@@ -38,7 +38,7 @@ body {
   flex-direction: column;
   margin: 0;
   padding: 0;
-  height: 50%;
+  height: 80vh;
   justify-content: space-evenly;
 }
 
@@ -82,4 +82,63 @@ body {
 
 .privacy-disclaimer a {
   color: #ffffff;
+}
+
+.pet {
+  background-color: #22283177;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.pet-image {
+  width: 200px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+
+.pet-info-table {
+  text-align: left;
+}
+
+.pet-info-table td,
+th {
+  padding: 5px 10px;
+}
+
+.pets-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.interested-button {
+  display: block;
+  margin: 10px auto;
+  background-color: #00adb5;
+  color: #ffffff;
+  padding: 6px 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
+.interested-button:hover {
+  background-color: #1bc4cd;
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: #00adb5;
+  color: #ffffff;
+  padding: 6px 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
+.submit-button:hover {
+  background-color: #1bc4cd;
+  cursor: pointer;
 }
