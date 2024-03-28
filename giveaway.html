@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Have a Pet to Give Away?</title>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <a href="index.html" class="logo">Pawsitive Connections: Find Your Fur-ever Friend!</a>
+        <span id="time"></span>
+    </div>
+    <div class="main">
+        <div class="navbar">
+            <ul class="links-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pets.html">Browse Available Pets</a></li>
+                <li><a href="find.html">Find a Dog/Cat</a></li>
+                <li><a href="dogcare.html">Dog Care</a></li>
+                <li><a href="catcare.html">Cat Care</a></li>
+                <li><a href="giveaway.html">Have a Pet to Give Away?</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h2>Give Away Your Pet</h2>
+            <form action="#" method="post">
+                <label for="pet-type">Cat or Dog:</label>
+                <select id="pet-type" name="pet-type">
+                    <option value="cat">Cat</option>
+                    <option value="dog">Dog</option>
+                </select><br>
+
+                <label for="breed">Breed:</label>
+                <input type="text" id="breed" name="breed" required><br>
+
+                <label for="age">Age:</label>
+                <select id="age" name="age">
+                    <option value="puppy/kitten">Puppy/Kitten</option>
+                    <option value="young">Young</option>
+                    <option value="adult">Adult</option>
+                    <option value="senior">Senior</option>
+                </select><br>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select><br>
+
+                <label for="other-dogs">Gets Along with Other Dogs:</label>
+                <input type="checkbox" id="other-dogs" name="other-dogs"><br>
+
+                <label for="other-cats">Gets Along with Other Cats:</label>
+                <input type="checkbox" id="other-cats" name="other-cats"><br>
+
+                <label for="small-children">Suitable for a Family with Small Children:</label>
+                <input type="checkbox" id="small-children" name="small-children"><br>
+
+                <label for="comments">Comments:</label><br>
+                <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br>
+
+                <label for="owner-name">Your Name:</label>
+                <input type="text" id="owner-name" name="owner-name" required><br>
+
+                <label for="owner-email">Your Email:</label>
+                <input type="email" id="owner-email" name="owner-email" required><br>
+
+                <input type="submit" value="Submit">
+                <input type="reset" value="Clear">
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="privacy-disclaimer">
+            <a href="privacy.html">Privacy Statement</a>
+        </div>
+        <p>&copy; 2024 Pawsitive Connections. All rights reserved.</p>
+    </div>
+</body>
+
+</html>
