@@ -9,8 +9,8 @@ body {
   height: 70px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
   color: #ffffff;
+  justify-content: space-between;
 }
 
 .logo {
@@ -18,6 +18,17 @@ body {
   color: #ffffff;
   font-weight: bold;
   font-size: large;
+  margin-left: 10px;
+}
+
+.logo-img {
+  width: 70px;
+  display: inline;
+  vertical-align: middle;
+}
+
+#time {
+  margin-right: 50px;
 }
 
 .main {
@@ -38,7 +49,7 @@ body {
   flex-direction: column;
   margin: 0;
   padding: 0;
-  height: 80vh;
+  height: 550px;
   justify-content: space-evenly;
 }
 
@@ -67,7 +78,7 @@ body {
   background-color: #eeeeee;
   color: #222831;
   width: 100%;
-  padding: 50px;
+  padding: 35px;
 }
 
 .footer {
@@ -141,4 +152,29 @@ th {
 .submit-button:hover {
   background-color: #1bc4cd;
   cursor: pointer;
+}
+
+.in-text-link {
+  color: #222831;
+  font-weight: bold;
+}
+
+.welcome-section {
+  margin-bottom: 40px;
+  min-width: 380px;
+}
+
+.welcome-image {
+  max-width: 250px;
+}
+
+.landing-welcome {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 950px) {
+  .landing-welcome {
+    flex-wrap: wrap;
+  }
 }
