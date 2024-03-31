@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <title>Find a pet</title>
     <script src="script.js"></script>
     <script src="changeBreedInput.js"></script>
@@ -31,22 +32,22 @@
             </ul>
         </div>
         <div class="content">
-            <h2>Find a Dog/Cat</h2>
+            <h2>Find a Pet</h2>
             <div class="form-wrapper">
                 <form onsubmit="event.preventDefault(); validateFindForm()">
                     <div class="form-div">
                         <label for="pet-type">Cat or Dog:</label>
-                        <select id="pet-type" name="pet-type" required onchange="handlePetTypeChange()">
+                        <select id="pet-type" name="pet-type" required onchange="handlePetTypeChange('find')">
                             <option value="">Select</option>
                             <option value="cat">Cat</option>
                             <option value="dog">Dog</option>
-                        </select><br><br>
+                        </select>
                     </div>
 
                     <div class="form-div" id="breed-div" hidden>
                         <label for="breed">Breed:</label>
                         <select id="breed" name="breed" required>
-                        </select><br><br>
+                        </select>
                     </div>
 
                     <div class="form-div">
@@ -58,7 +59,7 @@
                             <option value="young">Young</option>
                             <option value="adult">Adult</option>
                             <option value="senior">Senior</option>
-                        </select><br><br>
+                        </select>
                     </div>
 
                     <div class="form-div">
@@ -68,7 +69,7 @@
                             <option value="any">Doesn't Matter</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
-                        </select><br><br>
+                        </select>
                     </div>
 
                     <label for="compatibility">Compatibility:</label><br>

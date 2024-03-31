@@ -1,8 +1,13 @@
-function handlePetTypeChange() {
+// Renders the breed selection menu based on the selected type of pet. Either cat or dog.
+function handlePetTypeChange(srcHTML) {
   const petType = document.getElementById('pet-type').value;
   const breedDiv = document.getElementById('breed-div');
-  let breedInput =
-    '<option value="">Select</option><option value="any">Doesn\'t Matter</option>';
+  let breedInput = '<option value="">Select</option>';
+  // Have a doesn't Matter option only if the function is called from find.html. Otherwise, show a mixed breed option
+  breedInput +=
+    srcHTML == 'find'
+      ? '<option value="any">Doesn\'t Matter</option>'
+      : '<option value="mixed">Mixed</option>';
   const puppyKittenOption = document.getElementById('puppy-kitten');
   if (petType == 'cat') {
     breedDiv.hidden = false;
