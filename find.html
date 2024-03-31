@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <title>Find a pet</title>
     <script src="script.js"></script>
+    <script src="changeBreedInput.js"></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
             <ul class="links-list">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="pets.html">Browse Available Pets</a></li>
-                <li><a href="find.html">Find a Dog/Cat</a></li>
+                <li><a href="find.html">Find a Pet</a></li>
                 <li><a href="dogcare.html">Dog Care</a></li>
                 <li><a href="catcare.html">Cat Care</a></li>
                 <li><a href="giveaway.html">Have a Pet to Give Away?</a></li>
@@ -31,43 +32,58 @@
         </div>
         <div class="content">
             <h2>Find a Dog/Cat</h2>
-            <form onsubmit="event.preventDefault(); validateFindForm()">
-                <label for="pet-type">Cat or Dog:</label>
-                <select id="pet-type" name="pet-type">
-                    <option value="cat">Cat</option>
-                    <option value="dog">Dog</option>
-                </select><br><br>
+            <div class="form-wrapper">
+                <form onsubmit="event.preventDefault(); validateFindForm()">
+                    <div class="form-div">
+                        <label for="pet-type">Cat or Dog:</label>
+                        <select id="pet-type" name="pet-type" required onchange="handlePetTypeChange()">
+                            <option value="">Select</option>
+                            <option value="cat">Cat</option>
+                            <option value="dog">Dog</option>
+                        </select><br><br>
+                    </div>
 
-                <label for="breed">Breed:</label>
-                <input type="text" id="breed" name="breed" required><br><br>
+                    <div class="form-div" id="breed-div" hidden>
+                        <label for="breed">Breed:</label>
+                        <select id="breed" name="breed" required>
+                        </select><br><br>
+                    </div>
 
-                <label for="age">Preferred Age:</label>
-                <select id="age" name="age">
-                    <option value="any">Doesn't Matter</option>
-                    <option value="puppy/kitten">Puppy/Kitten</option>
-                    <option value="young">Young</option>
-                    <option value="adult">Adult</option>
-                    <option value="senior">Senior</option>
-                </select><br><br>
+                    <div class="form-div">
+                        <label for="age">Preferred Age:</label>
+                        <select id="age" name="age" required>
+                            <option value="">Select</option>
+                            <option value="any">Doesn't Matter</option>
+                            <option id="puppy-kitten" value="puppy-kitten">Puppy/Kitten</option>
+                            <option value="young">Young</option>
+                            <option value="adult">Adult</option>
+                            <option value="senior">Senior</option>
+                        </select><br><br>
+                    </div>
 
-                <label for="gender">Preferred Gender:</label>
-                <select id="gender" name="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="any">Doesn't Matter</option>
-                </select><br><br>
+                    <div class="form-div">
+                        <label for="gender">Preferred Gender:</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select</option>
+                            <option value="any">Doesn't Matter</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select><br><br>
+                    </div>
 
-                <label for="compatibility">Compatibility:</label><br>
-                <input type="checkbox" id="dogs" name="compatibility" value="other_dogs">
-                <label for="dogs">Gets along with other dogs</label><br>
-                <input type="checkbox" id="cats" name="compatibility" value="other_cats">
-                <label for="cats">Gets along with other cats</label><br>
-                <input type="checkbox" id="children" name="compatibility" value="small_children">
-                <label for="children">Gets along with small children</label><br><br>
+                    <label for="compatibility">Compatibility:</label><br>
+                    <input class="custom-checkbox" type="checkbox" id="dogs" name="compatibility" value="other_dogs">
+                    <label for="dogs">Gets along with other dogs</label><br>
+                    <input class="custom-checkbox" type="checkbox" id="cats" name="compatibility" value="other_cats">
+                    <label for="cats">Gets along with other cats</label><br>
+                    <input class="custom-checkbox" type="checkbox" id="children" name="compatibility" value="children">
+                    <label for="children">Gets along with children</label><br><br>
 
-                <input class="submit-button" type="submit" value="Submit">
-                <input class="submit-button" type="reset" value="Clear">
-            </form>
+
+                    <input class="submit-button" type="submit" value="Submit">
+                    <input class="submit-button" type="reset" value="Clear">
+                </form>
+            </div>
         </div>
     </div>
     <div class="footer">
