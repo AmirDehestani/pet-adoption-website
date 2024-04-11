@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <title>Have a Pet to Give Away?</title>
+    <script src="js/showTime.js"></script>
+    <script src="js/validateGiveAwayForm.js"></script>
+    <script src="js/changeBreedInput.js"></script>
+</head>
+
+<body>
+    <%- include('header.ejs') %>
+        <div class="main">
+            <%- include('navbar.ejs') %>
+                <div class="content">
+                    <h2>Give Away Your Pet</h2>
+                    <div class="form-wrapper">
+                        <form onsubmit="event.preventDefault(); validateGiveawayForm()">
+                            <div class="form-div">
+                                <label for="pet-type">Cat or Dog:</label>
+                                <select id="pet-type" name="pet-type" required onchange="handlePetTypeChange('give')">
+                                    <option value="">Select</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="dog">Dog</option>
+                                </select>
+                            </div>
+
+                            <div class="form-div" id="breed-div" hidden>
+                                <label for="breed">Breed:</label>
+                                <select id="breed" name="breed" required>
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+
+                            <div class="form-div">
+                                <label for="age">Age:</label>
+                                <select id="age" name="age" required>
+                                    <option value="">Select</option>
+                                    <option id="puppy-kitten" value="puppy-kitten">Puppy/Kitten</option>
+                                    <option value="young">Young</option>
+                                    <option value="adult">Adult</option>
+                                    <option value="senior">Senior</option>
+                                </select>
+                            </div>
+
+                            <div class="form-div">
+                                <label for="gender">Gender:</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+
+                            <div class="form-div">
+                                <span>Compatibility:</span><br>
+                                <input class="custom-checkbox" type="checkbox" id="dogs" name="compatibility"
+                                    value="other_dogs">
+                                <label for="dogs">Gets along with other dogs</label><br>
+                                <input class="custom-checkbox" type="checkbox" id="cats" name="compatibility"
+                                    value="other_cats">
+                                <label for="cats">Gets along with other cats</label><br>
+                                <input class="custom-checkbox" type="checkbox" id="children" name="compatibility"
+                                    value="children">
+                                <label for="children">Gets along with children</label>
+                            </div>
+
+                            <div class="form-div">
+                                <label for="comments">Comments:</label><br>
+                                <textarea class="comments-box" id="comments" name="comments" rows="4"
+                                    cols="50"></textarea><br>
+                            </div>
+
+                            <div class="form-div">
+                                <label for="owner-given-name">Your Given Name:</label>
+                                <input class="input-box" type="text" id="owner-given-name" name="owner-given-name"
+                                    required><br>
+                            </div>
+                            <div class="form-div">
+                                <label for="owner-surname">Your Surame:</label>
+                                <input class="input-box" type="text" id="owner-surname" name="owner-surname"
+                                    required><br>
+                            </div>
+
+                            <div class="form-div">
+                                <label for="owner-email">Your Email:</label>
+                                <input class="input-box" type="email" id="owner-email" name="owner-email" required><br>
+                            </div>
+
+                            <input class="submit-button" type="submit" value="Submit">
+                            <input class="submit-button" type="reset" value="Clear">
+                        </form>
+                    </div>
+                </div>
+        </div>
+        <%- include('footer.ejs') %>
+</body>
+
+</html>
