@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
 const app = express();
 
@@ -14,7 +15,21 @@ app.get('/', (req, res) => {
 });
 
 app.get('/pets', (req, res) => {
-  res.render('pets');
+  fs.readFile(path.join(__dirname, 'pets.json'), 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading pets.json:', err);
+      res.status(500).send('Error reading pets data');
+      return;
+    }
+
+    try {
+      const pets = JSON.parse(data);
+      res.render('pets', { pets: pets });
+    } catch (error) {
+      console.error('Error parsing pets data:', error);
+      res.status(500).send('Error parsing pets data');
+    }
+  });
 });
 
 app.get('/find', (req, res) => {

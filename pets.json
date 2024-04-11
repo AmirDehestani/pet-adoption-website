@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Fluffy",
+    "type": "Cat",
+    "breed": "British Shorthair",
+    "age": "Senior",
+    "gender": "Female",
+    "getsAlongWithDogs": true,
+    "getsAlongWithCats": true,
+    "suitableForFamilyWithChildren": true,
+    "image": "cat1.jpg"
+  },
+  {
+    "name": "Rex",
+    "type": "Dog",
+    "breed": "Golden Retriever",
+    "age": "Adult",
+    "gender": "Male",
+    "getsAlongWithDogs": true,
+    "getsAlongWithCats": true,
+    "suitableForFamilyWithChildren": true,
+    "image": "dog1.jpg"
+  },
+  {
+    "name": "Max",
+    "type": "Dog",
+    "breed": "Pembroke Welsh Corgi",
+    "age": "Young",
+    "gender": "Male",
+    "getsAlongWithDogs": true,
+    "getsAlongWithCats": false,
+    "suitableForFamilyWithChildren": true,
+    "image": "dog2.jpg"
+  },
+  {
+    "name": "Luna",
+    "type": "Cat",
+    "breed": "Siamese",
+    "age": "Puppy/Kitten",
+    "gender": "Female",
+    "getsAlongWithDogs": false,
+    "getsAlongWithCats": true,
+    "suitableForFamilyWithChildren": true,
+    "image": "cat2.jpg"
+  }
+]

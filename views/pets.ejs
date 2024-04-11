@@ -11,158 +11,69 @@
 </head>
 
 <body>
-    <%- include('header.ejs') %>
+    <% include('header.ejs') %>
         <div class="main">
-            <%- include('navbar.ejs') %>
+            <% include('navbar.ejs') %>
                 <div class="content">
                     <h2>Available Pets</h2>
                     <div class="pets-list">
-                        <div class="pet">
-                            <img class="pet-image" src="images/cat1.jpg" alt="Cat">
-                            <h3>Fluffy</h3>
-                            <table class="pet-info-table">
-                                <tr>
-                                    <th>Type:</th>
-                                    <td>Cat</td>
-                                </tr>
-                                <tr>
-                                    <th>Breed:</th>
-                                    <td>British Shorthair</td>
-                                </tr>
-                                <tr>
-                                    <th>Age:</th>
-                                    <td>Senior</td>
-                                </tr>
-                                <tr>
-                                    <th>Gender:</th>
-                                    <td>Female</td>
-                                </tr>
-                                <tr>
-                                    <th>Gets Along with Other Dogs:</th>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <th>Gets Along with Other Cats:</th>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <th>Suitable for a Family with Small Children:</th>
-                                    <td>Yes</td>
-                                </tr>
-                            </table>
-                            <button class="interested-button">Interested</button>
-                        </div>
-
-                        <div class="pet">
-                            <img class="pet-image" src="images/dog1.jpg" alt="Dog">
-                            <h3>Rex</h3>
-                            <table class="pet-info-table">
-                                <tr>
-                                    <th>Type:</th>
-                                    <td>Dog</td>
-                                </tr>
-                                <tr>
-                                    <th>Breed:</th>
-                                    <td>Golden Retriever</td>
-                                </tr>
-                                <tr>
-                                    <th>Age:</th>
-                                    <td>Adult</td>
-                                </tr>
-                                <tr>
-                                    <th>Gender:</th>
-                                    <td>Male</td>
-                                </tr>
-                                <tr>
-                                    <th>Gets Along with Other Dogs:</th>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <th>Gets Along with Other Cats:</th>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <th>Suitable for a Family with Small Children:</th>
-                                    <td>Yes</td>
-                                </tr>
-                            </table>
-                            <button class="interested-button">Interested</button>
-                        </div>
-                        <div class="pet">
-                            <img class="pet-image" src="images/dog2.jpg" alt="Dog">
-                            <h3>Max</h3>
-                            <table class="pet-info-table">
-                                <tr>
-                                    <th>Type:</th>
-                                    <td>Dog</td>
-                                </tr>
-                                <tr>
-                                    <th>Breed:</th>
-                                    <td>Pembroke Welsh Corgi</td>
-                                </tr>
-                                <tr>
-                                    <th>Age:</th>
-                                    <td>Young</td>
-                                </tr>
-                                <tr>
-                                    <th>Gender:</th>
-                                    <td>Male</td>
-                                </tr>
-                                <tr>
-                                    <th>Gets Along with Other Dogs:</th>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <th>Gets Along with Other Cats:</th>
-                                    <td>No</td>
-                                </tr>
-                                <tr>
-                                    <th>Suitable for a Family with Small Children:</th>
-                                    <td>Yes</td>
-                                </tr>
-                            </table>
-                            <button class="interested-button">Interested</button>
-                        </div>
-
-                        <div class="pet">
-                            <img class="pet-image" src="images/cat2.jpg" alt="Cat">
-                            <h3>Luna</h3>
-                            <table class="pet-info-table">
-                                <tr>
-                                    <th>Type:</th>
-                                    <td>Cat</td>
-                                </tr>
-                                <tr>
-                                    <th>Breed:</th>
-                                    <td>Siamese</td>
-                                </tr>
-                                <tr>
-                                    <th>Age:</th>
-                                    <td>Puppy/Kitten</td>
-                                </tr>
-                                <tr>
-                                    <th>Gender:</th>
-                                    <td>Female</td>
-                                </tr>
-                                <tr>
-                                    <th>Gets Along with Other Dogs:</th>
-                                    <td>No</td>
-                                </tr>
-                                <tr>
-                                    <th>Gets Along with Other Cats:</th>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <th>Suitable for a Family with Small Children:</th>
-                                    <td>Yes</td>
-                                </tr>
-                            </table>
-                            <button class="interested-button">Interested</button>
-                        </div>
+                        <% pets.forEach(function(pet) { %>
+                            <div class="pet">
+                                <img class="pet-image" src="images/<%= pet.image %>" alt="<%= pet.type %>">
+                                <h3>
+                                    <%= pet.name %>
+                                </h3>
+                                <table class="pet-info-table">
+                                    <tr>
+                                        <th>Type:</th>
+                                        <td>
+                                            <%= pet.type %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Breed:</th>
+                                        <td>
+                                            <%= pet.breed %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Age:</th>
+                                        <td>
+                                            <%= pet.age %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Gender:</th>
+                                        <td>
+                                            <%= pet.gender %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Gets Along with Other Dogs:</th>
+                                        <td>
+                                            <%= pet.getsAlongWithDogs ? 'Yes' : 'No' %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Gets Along with Other Cats:</th>
+                                        <td>
+                                            <%= pet.getsAlongWithCats ? 'Yes' : 'No' %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Suitable for a Family with Small Children:</th>
+                                        <td>
+                                            <%= pet.suitableForFamilyWithChildren ? 'Yes' : 'No' %>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <button class="interested-button">Interested</button>
+                            </div>
+                            <% }); %>
                     </div>
                 </div>
         </div>
-        <%- include('footer.ejs') %>
+        <% include('footer.ejs') %>
 </body>
 
 </html>
