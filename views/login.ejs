@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <title>Sign Up</title>
+    <title>Login</title>
     <script src="js/showTime.js"></script>
-    <script src="js/validateSignupForm.js"></script>
 </head>
 
 <body>
@@ -21,10 +20,9 @@
                             <%= message %>
                         </h1>
                         <% } %>
-                            <div class="signup-form-wrapper">
-                                <form class="signup-form" id="signup-form" action="/signup" method="POST"
-                                    onsubmit="event.preventDefault(); validateSignupForm()">
-                                    <h2>Sign Up</h2>
+                            <div class="login-form-wrapper">
+                                <form class="login-form" id="login-form" action="/login" method="POST">
+                                    <h2>Login</h2>
                                     <div class="form-div">
                                         <label for="user">Username:</label>
                                         <input class="input-box" type="text" id="user" name="user" required><br>
@@ -33,17 +31,8 @@
                                         <label for="pass">Password:</label>
                                         <input class="input-box" type="password" id="pass" name="pass" required><br>
                                     </div>
-                                    <input class="submit-button" type="submit" value="Sign Up">
+                                    <input class="submit-button" type="submit" value="Login">
                                 </form>
-                                <div class="signup-form-description">
-                                    <ul>
-                                        <li>A username can contain letters (both upper and lower
-                                            case) and digits only.</li>
-                                        <li>A password must be at least 4 characters long
-                                            (characters are to be letters and digits only), have at least one letter
-                                            and at least one digit.</li>
-                                    </ul>
-                                </div>
                             </div>
                 </div>
         </div>

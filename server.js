@@ -72,7 +72,7 @@ app.post('/giveaway', (req, res) => {
             return;
           }
           console.log('New pet added successfully!');
-          res.redirect('/pets'); // Redirect to the pets page
+          res.redirect('/pets');
         }
       );
     } catch (error) {
@@ -122,6 +122,43 @@ app.post('/signup', (req, res) => {
       message = 'Account successfully created. You can now log in.';
       res.render('signup', { message: message });
     });
+  });
+});
+
+app.get('/login', (req, res) => {
+  res.render('login', { message: null });
+});
+
+app.post('/login', (req, res) => {
+  const { user, pass } = req.body;
+  let message = '';
+
+  fs.readFile('login.txt', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Internal Server Error');
+    }
+
+    const existingUsernames = data
+      .split('\n')
+      .map((line) => line.split(':')[0]);
+
+    if (existingUsernames.includes(user)) {
+      userIndex = existingUsernames.indexOf(user);
+
+      const selectedUserPassword = data
+        .split('\n')
+        .map((line) => line.split(':')[1])[userIndex];
+
+      if (pass === selectedUserPassword) {
+        res.render('login', { message: `Welcome back ${user}` });
+      } else {
+        res.render('login', { message: 'Incorrect password' });
+      }
+    } else {
+      message = `User ${user} not found.`;
+      res.render('login', { message: message });
+    }
   });
 });
 

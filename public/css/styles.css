@@ -242,14 +242,16 @@ th {
   border: 2px solid #00acb5aa;
 }
 
-.signup-form-wrapper {
+.signup-form-wrapper,
+.login-form-wrapper {
   width: fit-content;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.signup-form {
+.signup-form,
+.login-form {
   height: 250px;
   width: 350px;
   box-sizing: border-box;
@@ -261,7 +263,8 @@ th {
   padding-bottom: 10px;
 }
 
-.signup-form .form-div {
+.signup-form .form-div,
+.login-form .form-div {
   width: 250px;
 }
 
