@@ -48,6 +48,40 @@ app.get('/giveaway', (req, res) => {
   res.render('giveaway');
 });
 
+app.post('/giveaway', (req, res) => {
+  const formData = req.body;
+
+  fs.readFile(path.join(__dirname, 'pets.json'), 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading pets.json:', err);
+      res.status(500).send('Error reading pets data');
+      return;
+    }
+
+    try {
+      const pets = JSON.parse(data);
+      pets.push(formData); // Add the new data to the pets.json
+
+      fs.writeFile(
+        path.join(__dirname, 'pets.json'),
+        JSON.stringify(pets, null, 2),
+        (err) => {
+          if (err) {
+            console.error('Error writing to pets.json:', err);
+            res.status(500).send('Error writing pets data');
+            return;
+          }
+          console.log('New pet added successfully!');
+          res.redirect('/pets'); // Redirect to the pets page
+        }
+      );
+    } catch (error) {
+      console.error('Error parsing pets data:', error);
+      res.status(500).send('Error parsing pets data');
+    }
+  });
+});
+
 app.get('/contact', (req, res) => {
   res.render('contact');
 });

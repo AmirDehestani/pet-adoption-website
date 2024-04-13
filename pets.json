@@ -1,14 +1,19 @@
 [
   {
     "name": "Fluffy",
-    "type": "Cat",
+    "type": "Dog",
     "breed": "British Shorthair",
     "age": "Senior",
     "gender": "Female",
-    "getsAlongWithDogs": true,
-    "getsAlongWithCats": true,
-    "suitableForFamilyWithChildren": true,
-    "image": "cat1.jpg"
+    "compatibility": [
+      "cats",
+      "children"
+    ],
+    "image": "cat1.jpg",
+    "comments": "",
+    "owner-given-name": "Amir",
+    "owner-surname": "Dehestani",
+    "owner-email": "amir@gmail.com"
   },
   {
     "name": "Rex",
@@ -16,10 +21,16 @@
     "breed": "Golden Retriever",
     "age": "Adult",
     "gender": "Male",
-    "getsAlongWithDogs": true,
-    "getsAlongWithCats": true,
-    "suitableForFamilyWithChildren": true,
-    "image": "dog1.jpg"
+    "compatibility": [
+      "dogs",
+      "cats",
+      "children"
+    ],
+    "image": "dog1.jpg",
+    "comments": "",
+    "owner-given-name": "Amir",
+    "owner-surname": "Dehestani",
+    "owner-email": "amir@gmail.com"
   },
   {
     "name": "Max",
@@ -27,10 +38,14 @@
     "breed": "Pembroke Welsh Corgi",
     "age": "Young",
     "gender": "Male",
-    "getsAlongWithDogs": true,
-    "getsAlongWithCats": false,
-    "suitableForFamilyWithChildren": true,
-    "image": "dog2.jpg"
+    "compatibility": [
+      "children"
+    ],
+    "image": "dog2.jpg",
+    "comments": "",
+    "owner-given-name": "Amir",
+    "owner-surname": "Dehestani",
+    "owner-email": "amir@gmail.com"
   },
   {
     "name": "Luna",
@@ -38,9 +53,41 @@
     "breed": "Siamese",
     "age": "Puppy/Kitten",
     "gender": "Female",
-    "getsAlongWithDogs": false,
-    "getsAlongWithCats": true,
-    "suitableForFamilyWithChildren": true,
-    "image": "cat2.jpg"
+    "compatibility": [
+      "dogs",
+      "cats"
+    ],
+    "image": "cat2.jpg",
+    "comments": "",
+    "owner-given-name": "Amir",
+    "owner-surname": "Dehestani",
+    "owner-email": "amir@gmail.com"
+  },
+  {
+    "name": "Lily",
+    "type": "Cat",
+    "breed": "Mixed",
+    "age": "Young",
+    "gender": "Female",
+    "compatibility": [],
+    "comments": "",
+    "owner-given-name": "Amir",
+    "owner-surname": "Dehestani",
+    "owner-email": "amira.dehestani@gmail.com"
+  },
+  {
+    "name": "Smokey",
+    "type": "Dog",
+    "breed": "Afghan Hound",
+    "age": "Adult",
+    "gender": "Male",
+    "compatibility": [
+      "dogs",
+      "children"
+    ],
+    "comments": "",
+    "owner-given-name": "Amir",
+    "owner-surname": "Dehestani",
+    "owner-email": "amir@gmail.com"
   }
 ]

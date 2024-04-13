@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <title>Have a Pet to Give Away?</title>
     <script src="js/showTime.js"></script>
     <script src="js/validateGiveAwayForm.js"></script>
@@ -19,13 +19,19 @@
                 <div class="content">
                     <h2>Give Away Your Pet</h2>
                     <div class="form-wrapper">
-                        <form onsubmit="event.preventDefault(); validateGiveawayForm()">
+                        <form id="giveawayForm" action="/giveaway" method="POST"
+                            onsubmit="event.preventDefault(); validateGiveawayForm()">
                             <div class="form-div">
-                                <label for="pet-type">Cat or Dog:</label>
-                                <select id="pet-type" name="pet-type" required onchange="handlePetTypeChange('give')">
+                                <label for="name">Pet Name:</label>
+                                <input class="input-box" type="text" id="name" name="name" required><br>
+                            </div>
+
+                            <div class="form-div">
+                                <label for="type">Cat or Dog:</label>
+                                <select id="type" name="type" required onchange="handlePetTypeChange('give')">
                                     <option value="">Select</option>
-                                    <option value="cat">Cat</option>
-                                    <option value="dog">Dog</option>
+                                    <option value="Cat">Cat</option>
+                                    <option value="Dog">Dog</option>
                                 </select>
                             </div>
 
@@ -40,10 +46,10 @@
                                 <label for="age">Age:</label>
                                 <select id="age" name="age" required>
                                     <option value="">Select</option>
-                                    <option id="puppy-kitten" value="puppy-kitten">Puppy/Kitten</option>
-                                    <option value="young">Young</option>
-                                    <option value="adult">Adult</option>
-                                    <option value="senior">Senior</option>
+                                    <option id="puppy-kitten" value="Puppy/Kitten">Puppy/Kitten</option>
+                                    <option value="Young">Young</option>
+                                    <option value="Adult">Adult</option>
+                                    <option value="Senior">Senior</option>
                                 </select>
                             </div>
 
@@ -51,18 +57,18 @@
                                 <label for="gender">Gender:</label>
                                 <select id="gender" name="gender" required>
                                     <option value="">Select</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                 </select>
                             </div>
 
                             <div class="form-div">
                                 <span>Compatibility:</span><br>
                                 <input class="custom-checkbox" type="checkbox" id="dogs" name="compatibility"
-                                    value="other_dogs">
+                                    value="dogs">
                                 <label for="dogs">Gets along with other dogs</label><br>
                                 <input class="custom-checkbox" type="checkbox" id="cats" name="compatibility"
-                                    value="other_cats">
+                                    value="cats">
                                 <label for="cats">Gets along with other cats</label><br>
                                 <input class="custom-checkbox" type="checkbox" id="children" name="compatibility"
                                     value="children">

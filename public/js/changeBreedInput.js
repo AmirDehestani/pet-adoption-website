@@ -1,33 +1,29 @@
 // Renders the breed selection menu based on the selected type of pet. Either cat or dog.
 function handlePetTypeChange(srcHTML) {
-  const petType = document.getElementById('pet-type').value;
+  const petType = document.getElementById('type').value;
   const breedDiv = document.getElementById('breed-div');
   let breedInput = '<option value="">Select</option>';
   // Have a doesn't Matter option only if the function is called from find.html. Otherwise, show a mixed breed option
   breedInput +=
     srcHTML == 'find'
       ? '<option value="any">Doesn\'t Matter</option>'
-      : '<option value="mixed">Mixed</option>';
+      : '<option value="Mixed">Mixed</option>';
   const puppyKittenOption = document.getElementById('puppy-kitten');
-  if (petType == 'cat') {
+  if (petType == 'Cat') {
     breedDiv.hidden = false;
     puppyKittenOption.innerHTML = 'Kitten';
     catBreeds.forEach(
       (cat) =>
-        (breedInput += `<option value="${cat
-          .toLowerCase()
-          .replaceAll(' ', '-')}">
+        (breedInput += `<option value="${cat}">
         ${cat}
         </option>`)
     );
-  } else if (petType == 'dog') {
+  } else if (petType == 'Dog') {
     breedDiv.hidden = false;
     puppyKittenOption.innerHTML = 'Puppy';
     dogBreeds.forEach(
       (dog) =>
-        (breedInput += `<option value="${dog
-          .toLowerCase()
-          .replaceAll(' ', '-')}">
+        (breedInput += `<option value="${dog}">
           ${dog}
           </option>`)
     );
