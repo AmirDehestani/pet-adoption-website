@@ -90,6 +90,10 @@ app.get('/privacy', (req, res) => {
   res.render('privacy');
 });
 
+app.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);

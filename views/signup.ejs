@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Sign Up</title>
+    <script src="js/showTime.js"></script>
+</head>
+
+<body>
+    <%- include('header.ejs') %>
+        <div class="main">
+            <%- include('navbar.ejs') %>
+                <div class="content">
+                    <div class="signup-form-wrapper">
+                        <form class="signup-form">
+                            <h2>Sign Up</h2>
+                            <div class="form-div">
+                                <label for="user">Username:</label>
+                                <input class="input-box" type="text" id="user" name="user" required><br>
+                            </div>
+                            <div class="form-div">
+                                <label for="pass">Password:</label>
+                                <input class="input-box" type="password" id="pass" name="pass" required><br>
+                            </div>
+                            <input class="submit-button" type="submit" value="Submit">
+                        </form>
+                        <div class="signup-form-description">
+                            <ul>
+                                <li>A username can contain letters (both upper and lower
+                                    case) and digits only.</li>
+                                <li>A password must be at least 4 characters long
+                                    (characters are to be letters and digits only), have at least one letter
+                                    and at least one digit.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <%- include('footer.ejs') %>
+</body>
+
+</html>

@@ -244,6 +244,7 @@ const catBreeds = [
   'Cornish Rex',
   'Cymric',
   'Devon Rex',
+  'Domestic Shorthair',
   'Egyptian Mau',
   'European Burmese',
   'Exotic Shorthair',
