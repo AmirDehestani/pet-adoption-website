@@ -91,7 +91,38 @@ app.get('/privacy', (req, res) => {
 });
 
 app.get('/signup', (req, res) => {
-  res.render('signup');
+  res.render('signup', { message: null });
+});
+
+app.post('/signup', (req, res) => {
+  const { user, pass } = req.body;
+  let message = '';
+
+  fs.readFile('login.txt', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Internal Server Error');
+    }
+
+    const existingUsernames = data
+      .split('\n')
+      .map((line) => line.split(':')[0]);
+
+    if (existingUsernames.includes(user)) {
+      message = `Username ${user} already exists. Please choose a different username.`;
+      res.render('signup', { message: message });
+    }
+
+    const newUserEntry = `${user}:${pass}\n`;
+    fs.appendFile('login.txt', newUserEntry, (err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send('Internal Server Error');
+      }
+      message = 'Account successfully created. You can now log in.';
+      res.render('signup', { message: message });
+    });
+  });
 });
 
 const PORT = 3000;
