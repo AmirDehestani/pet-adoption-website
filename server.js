@@ -9,6 +9,8 @@ const app = express();
 app.use(
   session({
     secret: '*)^a@^n2c$sg99n-1ir-x(-&tak75$u01d(fa&t#t7ub9v=-',
+    resave: false,
+    saveUninitialized: true,
   })
 );
 app.use(bodyParser.json());
@@ -51,7 +53,11 @@ app.get('/catcare', (req, res) => {
 });
 
 app.get('/giveaway', (req, res) => {
-  res.render('giveaway');
+  if (req.session.user) {
+    res.render('giveaway');
+  } else {
+    res.redirect('/login');
+  }
 });
 
 app.post('/giveaway', (req, res) => {

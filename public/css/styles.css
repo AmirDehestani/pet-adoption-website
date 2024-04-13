@@ -260,7 +260,7 @@ th {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 
 .signup-form .form-div,
@@ -280,4 +280,12 @@ th {
 .signup-form-description ul li {
   margin-right: 30px;
   padding-bottom: 30px;
+}
+
+.signup-buttons-section,
+.login-buttons-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
 }
