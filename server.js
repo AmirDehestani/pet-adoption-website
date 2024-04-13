@@ -2,9 +2,15 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const session = require('express-session');
 
 const app = express();
 
+app.use(
+  session({
+    secret: '*)^a@^n2c$sg99n-1ir-x(-&tak75$u01d(fa&t#t7ub9v=-',
+  })
+);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -151,6 +157,7 @@ app.post('/login', (req, res) => {
         .map((line) => line.split(':')[1])[userIndex];
 
       if (pass === selectedUserPassword) {
+        req.session.user = user;
         res.render('login', { message: `Welcome back ${user}` });
       } else {
         res.render('login', { message: 'Incorrect password' });
