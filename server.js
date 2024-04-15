@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.render('home');
+  res.render('home', { session: req.session.user });
 });
 
 app.get('/pets', (req, res) => {
@@ -56,7 +56,7 @@ app.get('/pets', (req, res) => {
         };
       });
 
-      res.render('pets', { pets: pets });
+      res.render('pets', { pets: pets, session: req.session.user });
     } catch (error) {
       console.error('Error parsing pets data:', error);
       res.status(500).send('Error parsing pets data');
@@ -65,7 +65,7 @@ app.get('/pets', (req, res) => {
 });
 
 app.get('/find', (req, res) => {
-  res.render('find');
+  res.render('find', { session: req.session.user });
 });
 
 app.post('/find', (req, res) => {
@@ -166,7 +166,7 @@ app.post('/find', (req, res) => {
         };
       });
 
-      res.render('pets', { pets });
+      res.render('pets', { pets: pets, session: req.session.user });
     } catch (error) {
       console.error('Error parsing pets data:', error);
       res.status(500).send('Error parsing pets data');
@@ -175,16 +175,16 @@ app.post('/find', (req, res) => {
 });
 
 app.get('/dogcare', (req, res) => {
-  res.render('dogcare');
+  res.render('dogcare', { session: req.session.user });
 });
 
 app.get('/catcare', (req, res) => {
-  res.render('catcare');
+  res.render('catcare', { session: req.session.user });
 });
 
 app.get('/giveaway', (req, res) => {
   if (req.session.user) {
-    res.render('giveaway');
+    res.render('giveaway', { session: req.session.user });
   } else {
     res.redirect('/login');
   }
@@ -214,15 +214,15 @@ app.post('/giveaway', (req, res) => {
 });
 
 app.get('/contact', (req, res) => {
-  res.render('contact');
+  res.render('contact', { session: req.session.user });
 });
 
 app.get('/privacy', (req, res) => {
-  res.render('privacy');
+  res.render('privacy', { session: req.session.user });
 });
 
 app.get('/signup', (req, res) => {
-  res.render('signup', { message: null });
+  res.render('signup', { message: null, session: req.session.user });
 });
 
 app.post('/signup', (req, res) => {
@@ -241,7 +241,13 @@ app.post('/signup', (req, res) => {
 
     if (existingUsernames.includes(user)) {
       message = `Username ${user} already exists. Please choose a different username.`;
-      res.render('signup', { message: message });
+      messageClass = 'failure-message';
+      res.render('signup', {
+        message: message,
+        messageClass: messageClass,
+        session: req.session.user,
+      });
+      return;
     }
 
     const newUserEntry = `${user}:${pass}\n`;
@@ -251,13 +257,18 @@ app.post('/signup', (req, res) => {
         return res.status(500).send('Internal Server Error');
       }
       message = 'Account successfully created. You can now log in.';
-      res.render('signup', { message: message });
+      messageClass = 'success-message';
+      res.render('signup', {
+        message: message,
+        messageClass: messageClass,
+        session: req.session.user,
+      });
     });
   });
 });
 
 app.get('/login', (req, res) => {
-  res.render('login', { message: null });
+  res.render('login', { message: null, session: req.session.user });
 });
 
 app.post('/login', (req, res) => {
@@ -283,13 +294,26 @@ app.post('/login', (req, res) => {
 
       if (pass === selectedUserPassword) {
         req.session.user = user;
-        res.render('login', { message: `Welcome back ${user}` });
+        res.render('login', {
+          message: `Welcome back ${user}`,
+          messageClass: 'success-message',
+          session: req.session.user,
+        });
       } else {
-        res.render('login', { message: 'Incorrect password' });
+        res.render('login', {
+          message: 'Incorrect password',
+          messageClass: 'failure-message',
+          session: req.session.user,
+        });
       }
     } else {
       message = `User ${user} not found.`;
-      res.render('login', { message: message });
+      messageClass = 'failure-message';
+      res.render('login', {
+        message: message,
+        messageClass: messageClass,
+        session: req.session.user,
+      });
     }
   });
 });

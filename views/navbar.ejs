@@ -1,14 +1,17 @@
 <div class="navbar">
     <ul class="links-list">
-        <li><a href="/">Home</a></li>
-        <li><a href="/pets">Browse Available Pets</a></li>
-        <li><a href="/find">Find a Pet</a></li>
-        <li><a href="/dogcare">Dog Care</a></li>
-        <li><a href="/catcare">Cat Care</a></li>
-        <li><a href="/giveaway">Have a Pet to Give Away?</a></li>
-        <li><a href="/contact">Contact Us</a></li>
-        <li><a href="/signup">Sign up</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/logout">Log Out</a></li>
+        <% if (session) { %>
+            <li><a href="/logout">Log Out</a></li>
+            <% } else { %>
+                <li><a href="/signup">Create an account</a></li>
+                <% } %>
+                    <li><a href="/">Home</a></li>
+                    <!-- <li><a href="/pets">Browse Available Pets</a></li> -->
+                    <li><a href="/find">Find a Pet</a></li>
+                    <li><a href="/dogcare">Dog Care</a></li>
+                    <li><a href="/catcare">Cat Care</a></li>
+                    <li><a href="/giveaway">Have a Pet to Give Away?</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <!-- <li><a href="/login">Login</a></li> -->
     </ul>
 </div>

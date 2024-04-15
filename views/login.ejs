@@ -16,28 +16,29 @@
             <%- include('navbar.ejs') %>
                 <div class="content">
                     <% if (message) { %>
-                        <h1>
-                            <%= message %>
-                        </h1>
-                        <% } %>
-                            <div class="login-form-wrapper">
-                                <form class="login-form" id="login-form" action="/login" method="POST">
-                                    <h2>Login</h2>
-                                    <div class="form-div">
-                                        <label for="user">Username:</label>
-                                        <input class="input-box" type="text" id="user" name="user" required><br>
+                        <%- include('message.ejs') %>
+                            <% } %>
+                                <% if (!session) { %>
+                                    <div class="login-form-wrapper">
+                                        <form class="login-form" id="login-form" action="/login" method="POST">
+                                            <h2>Login</h2>
+                                            <div class="form-div">
+                                                <label for="user">Username:</label>
+                                                <input class="input-box" type="text" id="user" name="user" required><br>
+                                            </div>
+                                            <div class="form-div">
+                                                <label for="pass">Password:</label>
+                                                <input class="input-box" type="password" id="pass" name="pass"
+                                                    required><br>
+                                            </div>
+                                            <div class="login-buttons-section">
+                                                <input class="submit-button" type="submit" value="Login">
+                                                <span>Don't have an account? <a href="/signup" class="in-text-link">Sign
+                                                        up</a></span>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div class="form-div">
-                                        <label for="pass">Password:</label>
-                                        <input class="input-box" type="password" id="pass" name="pass" required><br>
-                                    </div>
-                                    <div class="login-buttons-section">
-                                        <input class="submit-button" type="submit" value="Login">
-                                        <span>Don't have an account? <a href="/signup" class="in-text-link">Sign
-                                                up</a></span>
-                                    </div>
-                                </form>
-                            </div>
+                                    <%}%>
                 </div>
         </div>
         <%- include('footer.ejs') %>

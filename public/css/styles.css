@@ -288,3 +288,17 @@ th {
   gap: 5px;
   align-items: center;
 }
+
+.success-message {
+  border: 1px solid green;
+  background-color: rgba(0, 128, 0, 0.3);
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.failure-message {
+  border: 1px solid red;
+  background-color: rgba(255, 0, 0, 0.3);
+  padding: 5px;
+  margin-bottom: 15px;
+}
