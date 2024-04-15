@@ -23,15 +23,39 @@ app.get('/', (req, res) => {
 });
 
 app.get('/pets', (req, res) => {
-  fs.readFile(path.join(__dirname, 'pets.json'), 'utf8', (err, data) => {
+  fs.readFile(path.join(__dirname, 'pets.txt'), 'utf8', (err, data) => {
     if (err) {
-      console.error('Error reading pets.json:', err);
+      console.error('Error reading pets.txt:', err);
       res.status(500).send('Error reading pets data');
       return;
     }
 
     try {
-      const pets = JSON.parse(data);
+      // Split the data by lines
+      const lines = data.split('\n');
+
+      // Parse each line and create pet objects
+      const pets = lines.map((line) => {
+        const fields = line.split(':');
+        return {
+          index: fields[0],
+          ownerUsername: fields[1],
+          name: fields[2],
+          type: fields[3],
+          breed: fields[4],
+          age: fields[5],
+          gender: fields[6],
+          dogCompatibility: fields[7],
+          catCompatibility: fields[8],
+          childrenCompatibility: fields[9],
+          image: fields[10],
+          comments: fields[11],
+          ownerName: fields[12],
+          ownerSurname: fields[13],
+          ownerEmail: fields[14],
+        };
+      });
+
       res.render('pets', { pets: pets });
     } catch (error) {
       console.error('Error parsing pets data:', error);
@@ -62,35 +86,24 @@ app.get('/giveaway', (req, res) => {
 
 app.post('/giveaway', (req, res) => {
   const formData = req.body;
+  const petData = `${getNextIndex()}:${req.session.user}:${formData.name}:${
+    formData.type
+  }:${formData.breed}:${formData.age}:${formData.gender}:${
+    formData.compatibility.includes('dogs') ? 'Yes' : 'No'
+  }:${formData.compatibility.includes('cats') ? 'Yes' : 'No'}:${
+    formData.compatibility.includes('children') ? 'Yes' : 'No'
+  }:${formData.comments || ''}:${formData['owner-given-name']}:${
+    formData['owner-surname']
+  }:${formData['owner-email']}\n`;
 
-  fs.readFile(path.join(__dirname, 'pets.json'), 'utf8', (err, data) => {
+  fs.appendFile(path.join(__dirname, 'pets.txt'), petData, (err) => {
     if (err) {
-      console.error('Error reading pets.json:', err);
-      res.status(500).send('Error reading pets data');
+      console.error('Error writing to pets.txt:', err);
+      res.status(500).send('Error writing pets data');
       return;
     }
-
-    try {
-      const pets = JSON.parse(data);
-      pets.push(formData); // Add the new data to the pets.json
-
-      fs.writeFile(
-        path.join(__dirname, 'pets.json'),
-        JSON.stringify(pets, null, 2),
-        (err) => {
-          if (err) {
-            console.error('Error writing to pets.json:', err);
-            res.status(500).send('Error writing pets data');
-            return;
-          }
-          console.log('New pet added successfully!');
-          res.redirect('/pets');
-        }
-      );
-    } catch (error) {
-      console.error('Error parsing pets data:', error);
-      res.status(500).send('Error parsing pets data');
-    }
+    console.log('New pet added successfully!');
+    res.redirect('/pets');
   });
 });
 
@@ -175,7 +188,22 @@ app.post('/login', (req, res) => {
   });
 });
 
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
+function getNextIndex() {
+  try {
+    const data = fs.readFileSync(path.join(__dirname, 'pets.txt'), 'utf8');
+    const lines = data.trim().split('\n');
+    return lines.length + 1;
+  } catch (err) {
+    return 1;
+  }
+}

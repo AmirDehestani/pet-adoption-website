@@ -18,60 +18,62 @@
                     <h2>Available Pets</h2>
                     <div class="pets-list">
                         <% pets.forEach(function(pet) { %>
-                            <div class="pet">
-                                <% if (pet.image) { %>
-                                    <img class="pet-image" src="images/<%= pet.image %>" alt="<%= pet.type %>">
-                                    <% } %>
-                                        <h3>
-                                            <%= pet.name %>
-                                        </h3>
-                                        <table class="pet-info-table">
-                                            <tr>
-                                                <th>Type:</th>
-                                                <td>
-                                                    <%= pet.type %>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>Breed:</th>
-                                                <td>
-                                                    <%= pet.breed %>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>Age:</th>
-                                                <td>
-                                                    <%= pet.age %>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>Gender:</th>
-                                                <td>
-                                                    <%= pet.gender %>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>Gets Along with Other Dogs:</th>
-                                                <td>
-                                                    <%= pet.compatibility.includes('dogs') ? 'Yes' : 'No' %>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>Gets Along with Other Cats:</th>
-                                                <td>
-                                                    <%= pet.compatibility.includes('cats') ? 'Yes' : 'No' %>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>Suitable for a Family with Small Children:</th>
-                                                <td>
-                                                    <%= pet.compatibility.includes('children') ? 'Yes' : 'No' %>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <button class="interested-button">Interested</button>
-                            </div>
-                            <% }); %>
+                            <% if (pet.index) {%>
+                                <div class="pet">
+                                    <% if (pet.image) { %>
+                                        <img class="pet-image" src="images/<%= pet.image %>" alt="<%= pet.type %>">
+                                        <% } %>
+                                            <h3>
+                                                <%= pet.name %>
+                                            </h3>
+                                            <table class="pet-info-table">
+                                                <tr>
+                                                    <th>Type:</th>
+                                                    <td>
+                                                        <%= pet.type %>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Breed:</th>
+                                                    <td>
+                                                        <%= pet.breed %>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Age:</th>
+                                                    <td>
+                                                        <%= pet.age %>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Gender:</th>
+                                                    <td>
+                                                        <%= pet.gender %>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Gets Along with Other Dogs:</th>
+                                                    <td>
+                                                        <%= pet.dogCompatibility %>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Gets Along with Other Cats:</th>
+                                                    <td>
+                                                        <%= pet.catCompatibility %>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Suitable for a Family with Small Children:</th>
+                                                    <td>
+                                                        <%= pet.childrenCompatibility %>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <button class="interested-button">Interested</button>
+                                </div>
+                                <% } %>
+                                    <% }); %>
                     </div>
                 </div>
         </div>
