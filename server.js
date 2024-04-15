@@ -192,12 +192,13 @@ app.get('/giveaway', (req, res) => {
 
 app.post('/giveaway', (req, res) => {
   const formData = req.body;
+  const compatibility = formData.compatibility || []; // To avoid the error when compatibility array is empty
   const petData = `${getNextIndex()}:${req.session.user}:${formData.name}:${
     formData.type
   }:${formData.breed}:${formData.age}:${formData.gender}:${
-    formData.compatibility.includes('dogs') ? 'Yes' : 'No'
-  }:${formData.compatibility.includes('cats') ? 'Yes' : 'No'}:${
-    formData.compatibility.includes('children') ? 'Yes' : 'No'
+    compatibility.includes('dogs') ? 'Yes' : 'No'
+  }:${compatibility.includes('cats') ? 'Yes' : 'No'}:${
+    compatibility.includes('children') ? 'Yes' : 'No'
   }:${formData.comments || ''}:${formData['owner-given-name']}:${
     formData['owner-surname']
   }:${formData['owner-email']}\n`;
@@ -323,7 +324,7 @@ app.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-const PORT = 3000;
+const PORT = 5085;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
