@@ -209,8 +209,7 @@ app.post('/giveaway', (req, res) => {
       res.status(500).send('Error writing pets data');
       return;
     }
-    console.log('New pet added successfully!');
-    res.redirect('/pets');
+    res.redirect('/giveaway');
   });
 });
 
