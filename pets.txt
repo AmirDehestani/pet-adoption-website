@@ -1,4 +1,4 @@
-1:user1:Fluffy:Dog:British Shorthair:Senior:Female:No:Yes:Yes:cat1.jpg::Amir:Dehestani:amir@gmail.com
+1:user1:Fluffy:Cat:British Shorthair:Senior:Female:No:Yes:Yes:cat1.jpg::Amir:Dehestani:amir@gmail.com
 2:user1:Rex:Dog:Golden Retriever:Adult:Male:Yes:Yes:Yes:dog1.jpg::Amir:Dehestani:amir@gmail.com
 3:user1:Max:Dog:Pembroke Welsh Corgi:Young:Male:No:No:Yes:dog2.jpg::Amir:Dehestani:amir@gmail.com
 4:user1:Luna:Cat:Siamese:Puppy/Kitten:Female:Yes:Yes:No:cat2.jpg::Amir:Dehestani:amir@gmail.com

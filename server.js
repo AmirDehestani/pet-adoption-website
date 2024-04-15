@@ -68,6 +68,112 @@ app.get('/find', (req, res) => {
   res.render('find');
 });
 
+app.post('/find', (req, res) => {
+  const formData = req.body;
+
+  fs.readFile(path.join(__dirname, 'pets.txt'), 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading pets.txt:', err);
+      res.status(500).send('Error reading pets data');
+      return;
+    }
+
+    try {
+      const lines = data.trim().split('\n');
+      const filteredPets = lines.filter((line) => {
+        const [
+          index, // We won't need this
+          user, // We won't need this
+          name, // We won't need this
+          type,
+          breed,
+          age,
+          gender,
+          dogsCompatibility,
+          catsCompatibility,
+          childrenCompatibility,
+        ] = line.split(':');
+        if (formData.type && formData.type !== type) return false;
+        if (
+          formData.breed &&
+          formData.breed !== 'any' &&
+          formData.breed !== breed
+        )
+          return false;
+        if (formData.age && formData.age !== 'any' && formData.age !== age)
+          return false;
+        if (
+          formData.gender &&
+          formData.gender !== 'any' &&
+          formData.gender !== gender
+        )
+          return false;
+        if (formData.compatibility) {
+          if (
+            formData.compatibility.includes('other_dogs') &&
+            dogsCompatibility !== 'Yes'
+          )
+            return false;
+          if (
+            formData.compatibility.includes('other_cats') &&
+            catsCompatibility !== 'Yes'
+          )
+            return false;
+          if (
+            formData.compatibility.includes('children') &&
+            childrenCompatibility !== 'Yes'
+          )
+            return false;
+        }
+        return true;
+      });
+
+      // Construct an array of pet objects from the filtered lines
+      const pets = filteredPets.map((line) => {
+        const [
+          index,
+          user,
+          name,
+          type,
+          breed,
+          age,
+          gender,
+          dogCompatibility,
+          catCompatibility,
+          childrenCompatibility,
+          image,
+          comments,
+          ownerGivenName,
+          ownerSurname,
+          ownerEmail,
+        ] = line.split(':');
+        return {
+          index,
+          user,
+          name,
+          type,
+          breed,
+          age,
+          gender,
+          image,
+          dogCompatibility,
+          catCompatibility,
+          childrenCompatibility,
+          comments,
+          ownerGivenName,
+          ownerSurname,
+          ownerEmail,
+        };
+      });
+
+      res.render('pets', { pets });
+    } catch (error) {
+      console.error('Error parsing pets data:', error);
+      res.status(500).send('Error parsing pets data');
+    }
+  });
+});
+
 app.get('/dogcare', (req, res) => {
   res.render('dogcare');
 });
